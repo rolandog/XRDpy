@@ -1,0 +1,28 @@
+# XRDPy Docker Image to avoid build times
+
+FROM python:2.7.12
+
+MAINTAINER rolandog@gmail.com
+
+# Runtime Dependencies
+RUN apt-get update -qy && apt-get install -y \
+    gfortran \
+    liblapack-dev \
+    liblapack3 \
+    python-dev \
+    python-pip \
+    python-matplotlib \
+    python-numpy \
+    python-progressbar \
+    python-scipy \
+ && apt-get upgrade -y \
+ && apt-get autoclean -y \
+ && apt-get clean -y \
+ && apt-get purge -y \
+ && apt-get autoremove -y \
+ && rm -rf /var/lib/apt/lists/* \
+ && rm -rf ~/.cache
+
+COPY requirements.txt /tmp/
+
+RUN pip install --no-cache-dir -U -r /tmp/requirements.txt
