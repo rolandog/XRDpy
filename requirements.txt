@@ -1,0 +1,14 @@
+argparse
+line_profiler
+arrow
+bashplotlib
+colorama
+cycler
+fastdtw
+matplotlib
+numpy
+palettable
+prettytable
+PyWavelets
+scipy
+seaborn
